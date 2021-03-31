@@ -20,21 +20,24 @@ class Chronometer {
     // ... your code goes here
     //Logic: to turn seconds into minutes  ?? Math.floor(currentTime * 60) ??
     //STEP ONE. Create a variable to store my minutes
-    let myMinutes = 0;
+    let myMinutes = Math.floor(this.currentTime / 60);
+    this.currentTime + myMinutes;
+    return myMinutes;
 
-    let currentTime = 0;
-    return currentTime;
+    //let currentTime = 0;
+    //return currentTime;
   }
 
   getSeconds() {
     // ... your code goes here
     //same logic as before
-    let currentTimeSeconds = 0;
-    return currentTimeSeconds;
+    let mySeconds = this.currentTime;
+    return Number(mySeconds);
   }
 
-  twoDigitsNumber() {
+  twoDigitsNumber(aNumber) {
     // ... your code goes here
+    return (aNumber < 10 ? "0" : "") + aNumber;
   }
   stopClick() {
     // ... your code goes here
@@ -45,7 +48,11 @@ class Chronometer {
     //setting it back to 0
     this.currentTime = 0;
   }
-  splitClick() {
+  splitClick(myMinutes, mySeconds) {
     // ... your code goes here
+    myMinutes = this.currentTime;
+    mySeconds = this.currentTime;
+
+    return myMinutes + ":" + mySeconds;
   }
 }

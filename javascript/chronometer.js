@@ -6,10 +6,12 @@ class Chronometer {
     this.intervalId = 0;
   }
 
-  startClick(callback) {
+  startClick(printIt) {
     // ... your code goes here
     this.intervalId = setInterval(() => {
       this.currentTime++;
+      printIt();
+      //console.log(theTime);
       if (this.currentTime === 3) {
         //I need to do it till 3
       }
@@ -21,7 +23,6 @@ class Chronometer {
     //Logic: to turn seconds into minutes  ?? Math.floor(currentTime * 60) ??
     //STEP ONE. Create a variable to store my minutes
     let myMinutes = Math.floor(this.currentTime / 60);
-    this.currentTime + myMinutes;
     return myMinutes;
 
     //let currentTime = 0;
@@ -31,7 +32,8 @@ class Chronometer {
   getSeconds() {
     // ... your code goes here
     //same logic as before
-    let mySeconds = this.currentTime;
+
+    let mySeconds = Math.floor(this.currentTime % 60); //that
     return Number(mySeconds);
   }
 
@@ -40,6 +42,7 @@ class Chronometer {
     return (aNumber < 10 ? "0" : "") + aNumber;
   }
   stopClick() {
+    console.log("Stopped called");
     // ... your code goes here
     clearInterval(this.invertalId);
   }
@@ -48,11 +51,12 @@ class Chronometer {
     //setting it back to 0
     this.currentTime = 0;
   }
-  splitClick(myMinutes, mySeconds) {
+  splitClick() {
     // ... your code goes here
-    myMinutes = this.currentTime;
-    mySeconds = this.currentTime;
-
-    return myMinutes + ":" + mySeconds;
+    let myMinutes = this.getMinutes();
+    let mySeconds = this.getSeconds();
+    return (
+      this.twoDigitsNumber(myMinutes) + ":" + this.twoDigitsNumber(mySeconds)
+    );
   }
 }
